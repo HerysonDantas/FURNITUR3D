@@ -191,11 +191,11 @@ heightSlider.addEventListener('input', updateWardrobe);
 
 //Ambient light
 
-const ambientLight = new THREE.AmbientLight(0xffffff, 0.8);
+const ambientLight = new THREE.AmbientLight(0xffffff, 0.1);
 scene.add(ambientLight);
 
 //Key Light
-const directionalLight = new THREE.DirectionalLight(0xffffff, 3.0);
+const directionalLight = new THREE.DirectionalLight(0xffffff, 2);
 directionalLight.position.set(5, 5, 5);
 directionalLight.target.position.set(0, InitialHeight / (2 * 1000), 0);
 directionalLight.castShadow = true;
