@@ -195,7 +195,7 @@ const ambientLight = new THREE.AmbientLight(0xffffff, 0.1);
 scene.add(ambientLight);
 
 //Key Light
-const directionalLight = new THREE.DirectionalLight(0xffffff, 2);
+const directionalLight = new THREE.DirectionalLight(0xffffff, 1);
 directionalLight.position.set(5, 5, 5);
 directionalLight.target.position.set(0, InitialHeight / (2 * 1000), 0);
 directionalLight.castShadow = true;
@@ -207,7 +207,7 @@ scene.add(directionalLight);
 scene.add(directionalLight.target);
 
 // fill light
-const fillLight = new THREE.DirectionalLight(0xffffff, 1);
+const fillLight = new THREE.DirectionalLight(0xffffff, .8);
 fillLight.position.set(-5, 3, 5);
 fillLight.target.position.set(0, InitialHeight / (2 * 1000), 0);
 fillLight.castShadow = true;
@@ -218,7 +218,7 @@ scene.add(fillLight);
 scene.add(fillLight.target);
 
 // Back light
-const BackLight = new THREE.DirectionalLight(0xffffff, 0.8);
+const BackLight = new THREE.DirectionalLight(0xffffff, 0.5);
 BackLight.position.set(0, 5, -5);
 BackLight.target.position.set(0, InitialHeight / (2 * 1000), 0);
 BackLight.castShadow = true;
