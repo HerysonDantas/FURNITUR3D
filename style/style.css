@@ -1,0 +1,134 @@
+* {
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+    border: none;
+    font-family: "Montserrat";
+
+}
+
+body {
+    background-color: #EDF2FB;
+    height: fit-content;
+}
+
+.range_value {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    height: 40px;
+    width: 40px;
+    color: #4d4d4d;
+    border: solid #4d4d4d 1px;
+    border-radius: 50%;
+}
+
+header {
+    background-color: #EDF2FB;
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: hsl(0, 0%, 30%);
+    border-bottom: solid #4d4d4d 5px;
+}
+
+header H1 {
+    border-top: solid #4d4d4d 5px;
+    border-bottom: solid #4d4d4d 5px;
+}
+
+footer {
+    background-color: #AAAAAA;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    border-top: solid #4d4d4d 5px;
+    height: 10vh;
+    box-shadow: 0 -5px 10px rgba(0, 0, 0, 0.2);
+}
+
+.container_configurador {
+    display: flex;
+    align-items: center;
+    flex-direction: column-reverse;
+    justify-content: center;
+    height: auto;
+
+    width: 100vw;
+    box-sizing: border-box;
+    position: relative;
+
+}
+
+.configurador {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    gap: 30px;
+    width: 100%;
+    height: auto;
+    margin: 5vh 0;
+}
+
+.range_container {
+    display: flex;
+    justify-content: space-between;
+    font-size: 1em;
+    width: 100%;
+    color: #4d4d4d;
+    gap: 50px;
+
+}
+
+.slider_container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+    width: 100vw;
+}
+
+.range_line {
+    width: 60vw;
+    appearance: none;
+    height: 3px;
+    background: #4d4d4d;
+    cursor: pointer;
+}
+
+.range_line::-webkit-slider-thumb {
+    border-radius: 40%;
+    width: 20px;
+    height: 20px;
+    -webkit-appearance: none;
+    cursor: grab;
+    background: #434343;
+}
+
+
+.door_visibility {
+    position: absolute;
+    width: 35px;
+    height: 35px;
+    left: 35px;
+    top: 30px;
+}
+
+.slider_container__range {
+    display: flex;
+    flex-direction: column;
+}
+
+
+@media screen and (max-width:720px) {
+    .container_configurador {
+        flex-direction: column-reverse;
+        justify-content: center;
+        height: auto;
+    }
+
+}

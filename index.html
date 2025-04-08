@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style/style.css">
+    <link rel="stylesheet" href="style/canva.css">
+
+    <title>Document</title>
+
+
+</head>
+
+<body>
+    <header>
+        <h1>FURNITUR3D</h1>
+    </header>
+    <div id="containerConfigurador" class="container_configurador">
+        <img id="visibilityIcon" class="door_visibility" src="/assets/MdVisibility.svg" alt="visibilidade da porta">
+        <div id="controls" class="configurador">
+
+            <div class="slider_container">
+                <label for="lengthSlider" class="range_name">width</label>
+                <div class="slider_container__range">
+                    <input id="lengthSlider" class="range_line" type="range" min="400" max="1400" value="900" step="10">
+                    <div class="range_container">
+                        <span class="range_min">400</span>
+                        <span class="range_max">1400</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="slider_container">
+                <label for="heightSlider" class="range_name">height</label>
+                <div class="slider_container__range">
+                    <input id="heightSlider" class="range_line" type="range" min="1000" max="2400" value="1700"
+                        step="10">
+                    <div class="range_container">
+                        <span class="range_min">1000</span>
+                        <span class="range_max">2400</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="slider_container">
+                <label for="widthSlider" class="range_name">depth</label>
+                <div class="slider_container__range">
+                    <input id="widthSlider" class="range_line" type="range" min="300" max="600" value="450" step="10">
+                    <div class="range_container">
+                        <span class="range_min">300</span>
+                        <span class="range_max">600</span>
+                    </div>
+                </div>
+            </div>
+
+
+
+
+
+
+
+
+
+        </div>
+    </div>
+    <footer>
+        <h5>DEVELOPED BY HERYSON DANTAS - 2025</h5>
+    </footer>
+
+    <script type="importmap">
+        {
+            "imports":{
+                "three": "./node_modules/three/build/three.module.js"
+            }
+        }
+    </script>
+    <script type="module" src="/main.js"></script>
+</body>
+
+</html>
