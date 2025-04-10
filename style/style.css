@@ -111,12 +111,20 @@ footer {
 
 
 .door_visibility {
-    position: absolute;
     width: 35px;
     height: 35px;
+}
+.visibility {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: fit-content;
+    height: fit-content;
     left: 35px;
     top: 30px;
 }
+
 
 .slider_container__range {
     display: flex;

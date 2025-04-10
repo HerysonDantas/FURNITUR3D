@@ -29,16 +29,20 @@
         <h1>FURNITUR3D</h1>
     </header>
     <div id="containerConfigurador" class="container_configurador">
-        <img id="visibilityIcon" class="door_visibility" src="/assets/MdVisibility.svg" alt="visibilidade da porta">
+        <div class="visibility">
+            <img id="visibilityIcon" class="door_visibility" src="/assets/MdVisibility.svg" alt="visibilidade da porta">
+            <h6>Hide/Show Doors</h6>
+        </div>
+        
         <div id="controls" class="configurador">
 
             <div class="slider_container">
                 <label for="lengthSlider" class="range_name">width</label>
                 <div class="slider_container__range">
-                    <input id="lengthSlider" class="range_line" type="range" min="400" max="1400" value="900" step="10">
+                    <input id="lengthSlider" class="range_line" type="range" min="400" max="2000" value="1200" step="10">
                     <div class="range_container">
                         <span class="range_min">400</span>
-                        <span class="range_max">1400</span>
+                        <span class="range_max">2000</span>
                     </div>
                 </div>
             </div>
