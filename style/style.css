@@ -53,7 +53,7 @@ footer {
 .container_configurador {
     display: flex;
     align-items: center;
-    flex-direction: column-reverse;
+    flex-direction: column;
     justify-content: center;
     height: auto;
 
@@ -132,11 +132,18 @@ footer {
 }
 
 
-@media screen and (max-width:720px) {
+@media screen and (min-width:720px) {
     .container_configurador {
-        flex-direction: column-reverse;
+        flex-direction: row;
         justify-content: center;
-        height: auto;
+        height: 50vh;
     }
-
+    .slider_container {
+       
+        width: 30vw;
+    }
+    
+    .range_line {
+        width: 20vw;
+    }
 }
