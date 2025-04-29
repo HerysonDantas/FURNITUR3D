@@ -28,7 +28,3 @@ This project is a web-based application that allows users to interactively visua
 **Note:** Depending on your browser and security settings, you might need to run a simple local web server (like Python's `http.server`, Live Server VS Code extension, etc.) to correctly load the 3D model files (`.obj`, `.mtl`) and textures due to CORS restrictions.
 
 Once open, you should see the 3D wardrobe. Use the sliders (if available in your HTML) to change its dimensions and drag your mouse/touchpad to move the camera around the model. Look for a visibility icon (likely implemented in your HTML/CSS) to hide/show the doors.
-
-## Project Structure
-
-A typical structure for this project would look something like this:
