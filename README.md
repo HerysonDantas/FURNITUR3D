@@ -24,6 +24,7 @@ This project is a web-based application that allows users to interactively visua
 1.  Clone this repository to your local machine.
 2.  Navigate to the project directory.
 3.  Open the `index.html` file in your preferred web browser.
+4.  Or visit the Vercel version:(https://furnitur3d.vercel.app/)
 
 **Note:** Depending on your browser and security settings, you might need to run a simple local web server (like Python's `http.server`, Live Server VS Code extension, etc.) to correctly load the 3D model files (`.obj`, `.mtl`) and textures due to CORS restrictions.
 
