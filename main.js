@@ -29,10 +29,13 @@ const containerConfigurador = document.getElementById("veiwPortContainer");
 const canvas = renderer.domElement;
 canvas.removeAttribute("style");
 
-containerConfigurador.appendChild(canvas);
-
-renderer.setSize(containerConfigurador.clientWidth, containerConfigurador.clientHeight);
+renderer.setSize(
+  containerConfigurador.clientWidth,
+  containerConfigurador.clientHeight
+);
 canvas.classList.add("canvas");
+
+containerConfigurador.appendChild(canvas);
 // Camera configuration with Orbital Control
 const camera = new THREE.PerspectiveCamera(
   75, // Field of View
@@ -53,7 +56,6 @@ controls.maxPolarAngle = Math.PI;
 
 // Responsive canvas
 function onWindowResize() {
-    
   renderer.setSize(canvas.clientWidth, canvas.clientHeight);
   camera.aspect = canvas.clientWidth / canvas.clientHeight;
   camera.updateProjectionMatrix();
@@ -121,20 +123,25 @@ const material = new THREE.MeshPhysicalMaterial({
 })  */
 
 const material = new THREE.MeshPhysicalMaterial({
-  color: 0x495057,
+  /*   color: 0x495057,
   roughness: 0.1,
   metalness: 0,
   clearcoat: 1,
-  clearcoatRoughness: 0.8,
+  clearcoatRoughness: 0.8, */
+  color: 0x495057,
+  roughness: 0.8,
+  metalness: 0,
+  clearcoat: 1,
+  clearcoatRoughness: 0.5,
 });
 
 // create stardard material with assigned color
 const secondaryMaterial = new THREE.MeshPhysicalMaterial({
   color: 0xffffff,
-  roughness: 0.1,
+  roughness: 1,
   metalness: 0,
   clearcoat: 1,
-  clearcoatRoughness: 0.8,
+  clearcoatRoughness: 0,
 }); // create stardard material with assigned color
 
 // Create wardrobe with length, height, width dimensions ------------------------------------------------------------------------------------------------
@@ -201,15 +208,15 @@ function createWardrobe(
   doorGap,
   footerGap
 ) {
-  const scalePositionCorrection = 0.001; //convert mm in THREE.js units
+  const scaleCorrection = 0.001; //convert mm in THREE.js units
 
   const leftPart = createPart(
     width,
     height,
     materialThickness,
     material,
-    -((length - materialThickness) / 2) * scalePositionCorrection,
-    (height / 2) * scalePositionCorrection,
+    -((length - materialThickness) / 2) * scaleCorrection,
+    (height / 2) * scaleCorrection,
     0,
     0,
     Math.PI / 2,
@@ -221,8 +228,8 @@ function createWardrobe(
     height,
     materialThickness,
     material,
-    ((length - materialThickness) / 2) * scalePositionCorrection,
-    (height / 2) * scalePositionCorrection,
+    ((length - materialThickness) / 2) * scaleCorrection,
+    (height / 2) * scaleCorrection,
     0,
     0,
     Math.PI / 2,
@@ -236,7 +243,7 @@ function createWardrobe(
     materialThickness,
     material,
     0,
-    (100 + materialThickness / 2) * scalePositionCorrection,
+    (100 + materialThickness / 2) * scaleCorrection,
     0,
     Math.PI / 2,
     0,
@@ -249,7 +256,7 @@ function createWardrobe(
     materialThickness,
     material,
     0,
-    (height - materialThickness / 2) * scalePositionCorrection,
+    (height - materialThickness / 2) * scaleCorrection,
     0,
     Math.PI / 2,
     0,
@@ -263,8 +270,8 @@ function createWardrobe(
       doorThickness,
       secondaryMaterial,
       0,
-      ((height + footerHeight) / 2) * scalePositionCorrection,
-      ((width + doorThickness) / 2) * scalePositionCorrection,
+      ((height + footerHeight) / 2) * scaleCorrection,
+      ((width + doorThickness) / 2) * scaleCorrection,
       0,
       0,
       0,
@@ -273,9 +280,9 @@ function createWardrobe(
     doorPart.visible = isDoorVisible;
     if (handler) {
       handler.position.set(
-        (0.5 * length - 50) * scalePositionCorrection,
-        0.5 * height * scalePositionCorrection,
-        (width / 2 + materialThickness) * scalePositionCorrection
+        (0.5 * length - 50) * scaleCorrection,
+        0.5 * height * scaleCorrection,
+        (width / 2 + materialThickness) * scaleCorrection
       );
       handler.rotation.y = -Math.PI / 2;
       handler.name = "door Part";
@@ -290,9 +297,9 @@ function createWardrobe(
       height - doorGap - footerHeight,
       doorThickness,
       secondaryMaterial,
-      -(0.25 * length - (1 / 3) * doorGap) * scalePositionCorrection,
-      ((height + footerHeight) / 2) * scalePositionCorrection,
-      ((width + doorThickness) / 2) * scalePositionCorrection,
+      -(0.25 * length - (1 / 3) * doorGap) * scaleCorrection,
+      ((height + footerHeight) / 2) * scaleCorrection,
+      ((width + doorThickness) / 2) * scaleCorrection,
       0,
       0,
       0,
@@ -303,9 +310,9 @@ function createWardrobe(
       height - doorGap - footerHeight,
       doorThickness,
       secondaryMaterial,
-      (0.25 * length - (1 / 3) * doorGap) * scalePositionCorrection,
-      ((height + footerHeight) / 2) * scalePositionCorrection,
-      ((width + doorThickness) / 2) * scalePositionCorrection,
+      (0.25 * length - (1 / 3) * doorGap) * scaleCorrection,
+      ((height + footerHeight) / 2) * scaleCorrection,
+      ((width + doorThickness) / 2) * scaleCorrection,
       0,
       0,
       0,
@@ -315,18 +322,18 @@ function createWardrobe(
     doorPartB.visible = isDoorVisible;
     if (handler) {
       handler.position.set(
-        -50 * scalePositionCorrection,
-        0.5 * height * scalePositionCorrection,
-        (width / 2 + materialThickness) * scalePositionCorrection
+        -50 * scaleCorrection,
+        0.5 * height * scaleCorrection,
+        (width / 2 + materialThickness) * scaleCorrection
       );
       handler.rotation.y = -Math.PI / 2;
       handler.name = "door Part";
       handler.visible = isDoorVisible;
       const handler2 = handler.clone();
       handler2.position.set(
-        50 * scalePositionCorrection,
-        0.5 * height * scalePositionCorrection,
-        (width / 2 + materialThickness) * scalePositionCorrection
+        50 * scaleCorrection,
+        0.5 * height * scaleCorrection,
+        (width / 2 + materialThickness) * scaleCorrection
       );
       wardrobeGroup.add(handler, handler2);
     }
@@ -337,9 +344,9 @@ function createWardrobe(
       height - doorGap - footerHeight,
       doorThickness,
       secondaryMaterial,
-      -(0.25 * length - (1 / 3) * doorGap) * scalePositionCorrection,
-      ((height + footerHeight) / 2) * scalePositionCorrection,
-      ((width + doorThickness) / 2) * scalePositionCorrection,
+      -(0.25 * length - (1 / 3) * doorGap) * scaleCorrection,
+      ((height + footerHeight) / 2) * scaleCorrection,
+      ((width + doorThickness) / 2) * scaleCorrection,
       0,
       0,
       0,
@@ -350,9 +357,9 @@ function createWardrobe(
       height - doorGap - footerHeight,
       doorThickness,
       secondaryMaterial,
-      (0.25 * length - (1 / 3) * doorGap) * scalePositionCorrection,
-      ((height + footerHeight) / 2) * scalePositionCorrection,
-      ((width + doorThickness) / 2) * scalePositionCorrection,
+      (0.25 * length - (1 / 3) * doorGap) * scaleCorrection,
+      ((height + footerHeight) / 2) * scaleCorrection,
+      ((width + doorThickness) / 2) * scaleCorrection,
       0,
       0,
       0,
@@ -364,8 +371,8 @@ function createWardrobe(
       materialThickness,
       material,
       0,
-      ((height + footerHeight) / 2) * scalePositionCorrection,
-      materialThickness * scalePositionCorrection,
+      ((height + footerHeight) / 2) * scaleCorrection,
+      0.5*materialThickness * scaleCorrection,
       0,
       Math.PI / 2,
       0,
@@ -377,9 +384,9 @@ function createWardrobe(
       materialThickness,
       material,
       ((length - 3 * materialThickness) / 4 + 0.5 * materialThickness) *
-        scalePositionCorrection,
-      (400 + footerHeight + materialThickness / 2) * scalePositionCorrection,
-      0.5 * materialThickness * scalePositionCorrection,
+        scaleCorrection,
+      (400 + footerHeight + materialThickness / 2) * scaleCorrection,
+      0.5 * materialThickness * scaleCorrection,
       Math.PI / 2,
       0,
       0,
@@ -389,18 +396,18 @@ function createWardrobe(
     doorPartB.visible = isDoorVisible;
     if (handler) {
       handler.position.set(
-        -50 * scalePositionCorrection,
-        0.5 * height * scalePositionCorrection,
-        (width / 2 + materialThickness) * scalePositionCorrection
+        -50 * scaleCorrection,
+        0.5 * height * scaleCorrection,
+        (width / 2 + materialThickness) * scaleCorrection
       );
       handler.rotation.y = -Math.PI / 2;
       handler.name = "door Part";
       handler.visible = isDoorVisible;
       const handler2 = handler.clone();
       handler2.position.set(
-        50 * scalePositionCorrection,
-        0.5 * height * scalePositionCorrection,
-        (width / 2 + materialThickness) * scalePositionCorrection
+        50 * scaleCorrection,
+        0.5 * height * scaleCorrection,
+        (width / 2 + materialThickness) * scaleCorrection
       );
       wardrobeGroup.add(handler, handler2);
     }
@@ -412,9 +419,9 @@ function createWardrobe(
       height - doorGap - footerHeight,
       doorThickness,
       secondaryMaterial,
-      -((1 / 3) * length - (1 / 4) * doorGap) * scalePositionCorrection,
-      ((height + footerHeight) / 2) * scalePositionCorrection,
-      ((width + doorThickness) / 2) * scalePositionCorrection,
+      -((1 / 3) * length - (1 / 4) * doorGap) * scaleCorrection,
+      ((height + footerHeight) / 2) * scaleCorrection,
+      ((width + doorThickness) / 2) * scaleCorrection,
       0,
       0,
       0,
@@ -426,8 +433,8 @@ function createWardrobe(
       doorThickness,
       secondaryMaterial,
       0,
-      ((height + footerHeight) / 2) * scalePositionCorrection,
-      ((width + doorThickness) / 2) * scalePositionCorrection,
+      ((height + footerHeight) / 2) * scaleCorrection,
+      ((width + doorThickness) / 2) * scaleCorrection,
       0,
       0,
       0,
@@ -438,9 +445,9 @@ function createWardrobe(
       height - doorGap - footerHeight,
       doorThickness,
       secondaryMaterial,
-      ((1 / 3) * length - (1 / 4) * doorGap) * scalePositionCorrection,
-      ((height + footerHeight) / 2) * scalePositionCorrection,
-      ((width + doorThickness) / 2) * scalePositionCorrection,
+      ((1 / 3) * length - (1 / 4) * doorGap) * scaleCorrection,
+      ((height + footerHeight) / 2) * scaleCorrection,
+      ((width + doorThickness) / 2) * scaleCorrection,
       0,
       0,
       0,
@@ -451,9 +458,9 @@ function createWardrobe(
       height - 2 * materialThickness - footerHeight,
       materialThickness,
       material,
-      (length / 6) * scalePositionCorrection,
-      ((height + footerHeight) / 2) * scalePositionCorrection,
-      materialThickness * scalePositionCorrection,
+      (length / 6) * scaleCorrection,
+      ((height + footerHeight) / 2) * scaleCorrection,
+      0.5*materialThickness * scaleCorrection,
       0,
       Math.PI / 2,
       0,
@@ -464,9 +471,9 @@ function createWardrobe(
       width - materialThickness,
       materialThickness,
       material,
-      ((1 / 3) * length - (1 / 4) * doorGap) * scalePositionCorrection,
-      (400 + footerHeight + materialThickness / 2) * scalePositionCorrection,
-      0.5 * materialThickness * scalePositionCorrection,
+      ((1 / 3) * length - (1 / 4) * doorGap) * scaleCorrection,
+      (400 + footerHeight + materialThickness / 2) * scaleCorrection,
+      0.5 * materialThickness * scaleCorrection,
       Math.PI / 2,
       0,
       0,
@@ -481,9 +488,9 @@ function createWardrobe(
         (-((1 / 3) * length - (1 / 4) * doorGap) +
           ((length - 4 * doorGap) / 3) * 0.5 -
           50) *
-          scalePositionCorrection,
-        0.5 * height * scalePositionCorrection,
-        (width / 2 + materialThickness) * scalePositionCorrection
+          scaleCorrection,
+        0.5 * height * scaleCorrection,
+        (width / 2 + materialThickness) * scaleCorrection
       );
       handler.rotation.y = -Math.PI / 2;
       handler.name = "door Part";
@@ -491,9 +498,9 @@ function createWardrobe(
 
       const handler2 = handler.clone();
       handler2.position.set(
-        -(((length - 4 * doorGap) / 3) * 0.5 - 50) * scalePositionCorrection,
-        0.5 * height * scalePositionCorrection,
-        (width / 2 + materialThickness) * scalePositionCorrection
+        -(((length - 4 * doorGap) / 3) * 0.5 - 50) * scaleCorrection,
+        0.5 * height * scaleCorrection,
+        (width / 2 + materialThickness) * scaleCorrection
       );
 
       const handler3 = handler.clone();
@@ -502,9 +509,9 @@ function createWardrobe(
           -((1 / 3) * length - (1 / 4) * doorGap) +
           ((length - 4 * doorGap) / 3) * 0.5 -
           50
-        ) * scalePositionCorrection,
-        0.5 * height * scalePositionCorrection,
-        (width / 2 + materialThickness) * scalePositionCorrection
+        ) * scaleCorrection,
+        0.5 * height * scaleCorrection,
+        (width / 2 + materialThickness) * scaleCorrection
       );
 
       wardrobeGroup.add(handler, handler2, handler3);
@@ -524,9 +531,9 @@ function createWardrobe(
     height - footerHeight - 2 * materialThickness,
     backThickness,
     secondaryMaterial,
-    0 * scalePositionCorrection,
-    ((height + footerHeight) / 2) * scalePositionCorrection,
-    -((width - backThickness) / 2) * scalePositionCorrection,
+    0 * scaleCorrection,
+    ((height + footerHeight) / 2) * scaleCorrection,
+    -((width - backThickness) / 2) * scaleCorrection,
     0,
     0,
     0,
@@ -539,8 +546,8 @@ function createWardrobe(
     materialThickness,
     material,
     0,
-    (footerHeight / 2) * scalePositionCorrection,
-    -((width - materialThickness) / 2) * scalePositionCorrection,
+    (footerHeight / 2) * scaleCorrection,
+    -((width - materialThickness) / 2) * scaleCorrection,
     0,
     0,
     0,
@@ -552,8 +559,8 @@ function createWardrobe(
     materialThickness,
     secondaryMaterial,
     0,
-    (footerHeight / 2) * scalePositionCorrection,
-    (width / 2 - footerGap) * scalePositionCorrection,
+    (footerHeight / 2) * scaleCorrection,
+    (width / 2 - footerGap) * scaleCorrection,
     0,
     0,
     0,
